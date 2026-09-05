@@ -1,0 +1,131 @@
+{
+  "name": "open-md-preview",
+  "displayName": "open.md Preview",
+  "description": "Open a polished native Markdown preview beside the editor.",
+  "version": "0.1.0",
+  "packageManager": "pnpm@12.1.0",
+  "publisher": "gvastethecreator",
+  "author": {
+    "name": "gvastethecreator"
+  },
+  "license": "MIT",
+  "type": "module",
+  "icon": "media/icon.png",
+  "private": true,
+  "pricing": "Free",
+  "galleryBanner": {
+    "color": "#17191f",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gvastethecreator/vscode-open-md-preview.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gvastethecreator/vscode-open-md-preview/issues"
+  },
+  "homepage": "https://github.com/gvastethecreator/vscode-open-md-preview#readme",
+  "keywords": [
+    "markdown",
+    "preview",
+    "documentation",
+    "reader",
+    "mermaid"
+  ],
+  "engines": {
+    "vscode": "^1.134.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:markdown"
+  ],
+  "main": "./dist/node/extension.cjs",
+  "browser": "./dist/web/extension.cjs",
+  "extensionKind": [
+    "ui",
+    "workspace"
+  ],
+  "files": [
+    "dist/node/extension.cjs",
+    "dist/web/extension.cjs",
+    "dist/preview/client.js",
+    "media/icon.png",
+    "media/preview.css",
+    "media/preview.png",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "capabilities": {
+    "virtualWorkspaces": {
+      "supported": true
+    },
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "openMdPreview.toggleAutoPreview",
+        "title": "Toggle Auto Preview",
+        "category": "open.md Preview"
+      }
+    ],
+    "configuration": {
+      "title": "open.md Preview",
+      "properties": {
+        "openMdPreview.autoOpen": {
+          "type": "boolean",
+          "default": true,
+          "scope": "resource",
+          "description": "Open the native Markdown preview beside an active saved Markdown document."
+        }
+      }
+    },
+    "markdown.previewStyles": [
+      "./media/preview.css"
+    ],
+    "markdown.previewScripts": [
+      "./dist/preview/client.js"
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run package",
+    "compile": "tsc --noEmit && node esbuild.cjs",
+    "watch": "node esbuild.cjs --watch",
+    "package": "tsc --noEmit && node esbuild.cjs --production",
+    "vsix": "vsce package --no-dependencies --out open-md-preview.vsix",
+    "inspect:vsix": "node scripts/inspect-vsix.mjs open-md-preview.vsix",
+    "check-types": "tsc --noEmit",
+    "test": "pnpm run test:unit",
+    "test:unit": "node --test --experimental-strip-types src/**/*.test.ts",
+    "test:performance": "node --experimental-strip-types scripts/performance.mjs",
+    "test:integration": "node test/integration/run.mjs",
+    "build:test-web": "node scripts/build-web-tests.mjs",
+    "test:web": "pnpm run build:test-web && node test/web/run.mjs",
+    "test:vsix": "node test/integration/run-vsix.mjs",
+    "render:media": "node scripts/render-media.mjs",
+    "check:media": "node scripts/check-media.mjs",
+    "quality": "pnpm run test:unit && pnpm run check-types && pnpm run compile && pnpm run test:performance && pnpm run check:media"
+  },
+  "devDependencies": {
+    "@types/node": "^26.4.0",
+    "@types/vscode": "^1.134.0",
+    "@types/yauzl": "3.4.0",
+    "@vscode/test-electron": "3.1.0",
+    "@vscode/test-web": "0.0.81",
+    "@vscode/vsce": "^3.9.2",
+    "esbuild": "^0.28.2",
+    "happy-dom": "20.14.0",
+    "ovsx": "1.1.1",
+    "playwright": "1.62.1",
+    "sharp": "^0.35.4",
+    "typescript": "^7.0.2",
+    "yauzl": "3.4.0"
+  }
+}
