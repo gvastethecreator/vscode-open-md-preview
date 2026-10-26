@@ -1,7 +1,7 @@
 # Code map: vscode-open-md-preview
 
-Generated: 2026-10-26T07:24:18Z | Commit: `4336926237f8` | Schema: 2
-Generation: `fc382711ffc77b4121da83461eebe0a56fe97ded297151b66043c0d9b73d1e81`
+Generated: 2026-10-26T07:46:04Z | Commit: `3f3027413780` | Schema: 2
+Generation: `4db1cbed113cbdff1d51180cbab229009207d8fc7368fe11b8e9d9d8847be376`
 Scope: . | Inventory: working-tree
 Nodes: 45 | Edges: 112 | Flows: 0
 

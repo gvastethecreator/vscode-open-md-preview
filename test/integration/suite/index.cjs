@@ -97,7 +97,10 @@ async function run() {
   assert.equal(JSON.stringify(vscode.workspace.getConfiguration("openMdPreview", sessionUri).inspect("autoOpen")), configurationBefore, "Session pause changed saved settings.");
 
   await vscode.workspace.fs.writeFile(vscode.Uri.joinPath(folder, "cancelled.md"), new TextEncoder().encode("# Cancelled opening\n"));
+  await vscode.commands.executeCommand("openMdPreview.pauseSession");
   await showWorkspaceFile("cancelled.md");
+  assert.equal(markdownPreviewTabs().length, 0, "Cancellation fixture already has a preview.");
+  await vscode.commands.executeCommand("openMdPreview.resumeSession");
   await vscode.commands.executeCommand("openMdPreview.pauseSession");
   await assertNoPreview("Pause did not cancel a scheduled opening.");
   const newerEditor = await showWorkspaceFile("plain.txt");
