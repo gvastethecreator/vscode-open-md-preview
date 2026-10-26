@@ -1,7 +1,7 @@
 # Code map: vscode-open-md-preview
 
-Generated: 2026-10-26T05:28:19Z | Commit: `05535fbe67ad` | Schema: 2
-Generation: `45caf68409f1c6d2484346b0fa23001f723e19538b6ca01346bc02ad27c9d069`
+Generated: 2026-10-26T07:24:18Z | Commit: `4336926237f8` | Schema: 2
+Generation: `fc382711ffc77b4121da83461eebe0a56fe97ded297151b66043c0d9b73d1e81`
 Scope: . | Inventory: working-tree
 Nodes: 45 | Edges: 112 | Flows: 0
 
@@ -9,7 +9,7 @@ Nodes: 45 | Edges: 112 | Flows: 0
 
 - Analysis: **partial**; 27 analyzed of 28 included files.
 - Configuration files: 1; omitted untracked files: 0.
-- Unresolved references and analysis limits: 166.
+- Unresolved references and analysis limits: 167.
 - Static references and call paths do not prove runtime execution or test coverage.
 
 ## Modules

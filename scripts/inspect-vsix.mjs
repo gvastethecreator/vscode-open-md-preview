@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { stat } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import yauzl from "yauzl";
@@ -40,7 +40,7 @@ for (const name of names) {
 
 const manifest = JSON.parse(contents.get("extension/package.json").toString("utf8"));
 assert.equal(manifest.name, "open-md-preview");
-assert.equal(manifest.version, "0.1.0");
+assert.equal(manifest.version, JSON.parse(await readFile(path.join(root, "package.json"), "utf8")).version);
 assert.equal(manifest.main, "./dist/node/extension.cjs");
 assert.equal(manifest.browser, "./dist/web/extension.cjs");
 assert.deepEqual(manifest.activationEvents, ["onLanguage:markdown"]);
