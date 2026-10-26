@@ -289,8 +289,8 @@ async function waitForMarkdownPreview(
     const previews = markdownPreviewTabs();
     const opened = previews.find((tab) => !previous.has(tab));
     const active = previews.find((tab) => tab.isActive);
-    if (opened || active) return opened ?? active;
-    if (previous.size === 0 && previews.length > 0) return previews.at(-1);
+    const preview = opened ?? active;
+    if (preview && vscode.window.tabGroups.activeTabGroup.activeTab === preview) return preview;
     await new Promise<void>((resolve) => {
       const timer = setTimeout(finish, 50);
       const subscription = token.onCancellationRequested(finish);
