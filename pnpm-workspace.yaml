@@ -1,0 +1,8 @@
+allowBuilds:
+  esbuild: true
+  sharp: true
+  "@vscode/vsce-sign": false
+  keytar: false
+  "@playwright/browser-chromium": true
+minimumReleaseAgeExclude:
+  - happy-dom@20.14.0
